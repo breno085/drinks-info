@@ -1,0 +1,14 @@
+/home/brenoacioli/Documents/drinks-info/bin/Debug/net8.0/drinks-info
+/home/brenoacioli/Documents/drinks-info/bin/Debug/net8.0/drinks-info.deps.json
+/home/brenoacioli/Documents/drinks-info/bin/Debug/net8.0/drinks-info.runtimeconfig.json
+/home/brenoacioli/Documents/drinks-info/bin/Debug/net8.0/drinks-info.dll
+/home/brenoacioli/Documents/drinks-info/bin/Debug/net8.0/drinks-info.pdb
+/home/brenoacioli/Documents/drinks-info/obj/Debug/net8.0/drinks-info.GeneratedMSBuildEditorConfig.editorconfig
+/home/brenoacioli/Documents/drinks-info/obj/Debug/net8.0/drinks-info.AssemblyInfoInputs.cache
+/home/brenoacioli/Documents/drinks-info/obj/Debug/net8.0/drinks-info.AssemblyInfo.cs
+/home/brenoacioli/Documents/drinks-info/obj/Debug/net8.0/drinks-info.csproj.CoreCompileInputs.cache
+/home/brenoacioli/Documents/drinks-info/obj/Debug/net8.0/drinks-info.dll
+/home/brenoacioli/Documents/drinks-info/obj/Debug/net8.0/refint/drinks-info.dll
+/home/brenoacioli/Documents/drinks-info/obj/Debug/net8.0/drinks-info.pdb
+/home/brenoacioli/Documents/drinks-info/obj/Debug/net8.0/drinks-info.genruntimeconfig.cache
+/home/brenoacioli/Documents/drinks-info/obj/Debug/net8.0/ref/drinks-info.dll
