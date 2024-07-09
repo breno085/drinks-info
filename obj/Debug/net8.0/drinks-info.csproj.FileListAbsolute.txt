@@ -12,3 +12,9 @@
 /home/brenoacioli/Documents/drinks-info/obj/Debug/net8.0/drinks-info.pdb
 /home/brenoacioli/Documents/drinks-info/obj/Debug/net8.0/drinks-info.genruntimeconfig.cache
 /home/brenoacioli/Documents/drinks-info/obj/Debug/net8.0/ref/drinks-info.dll
+/home/brenoacioli/Documents/drinks-info/bin/Debug/net8.0/ConsoleTableExt.dll
+/home/brenoacioli/Documents/drinks-info/bin/Debug/net8.0/Newtonsoft.Json.dll
+/home/brenoacioli/Documents/drinks-info/bin/Debug/net8.0/RestSharp.dll
+/home/brenoacioli/Documents/drinks-info/obj/Debug/net8.0/drinks-info.csproj.AssemblyReference.cache
+/home/brenoacioli/Documents/drinks-info/obj/Debug/net8.0/drinks-info.sourcelink.json
+/home/brenoacioli/Documents/drinks-info/obj/Debug/net8.0/drinks-i.B145AF9C.Up2Date
