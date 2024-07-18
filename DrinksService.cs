@@ -17,14 +17,24 @@ namespace drinks_info
             // 5 passo - call the api
             //For that you need to create an instance of the RestClient class
             //and pass api url as an argument
+
+            //Criação da instancia da classe RestClient - esse classe é a responsável por gerenciar a comunicação com a API
             var client = new RestClient("http://www.thecocktaildb.com/api/json/v1/1/");
+            
+            //Criação da instancia da classe RestRequest - especifica o endpoint da API que quero chamar
+            //nesse caso é "list.php?c=list" que recupera uma lista de categorias
             var request = new RestRequest("list.php?c=list");
+            
+            //Esta linha executa a solicitação de forma assíncrona.
+            //O método ExecuteAsync envia a solicitação à API e aguarda a resposta. A resposta contém os dados retornados pela API.
+            //RestResponse ('response') contém o código de status, conteúdo e outros metadados sobre a resposta.
             var response = client.ExecuteAsync(request);
 
             List<Category> categories = new();
 
             if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
             {
+                //Recupera o conteúdo bruto da resposta JSON
                 string rawResponse = response.Result.Content;
                 var serialize = JsonConvert.DeserializeObject<Categories>(rawResponse);
 
