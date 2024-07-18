@@ -28,65 +28,13 @@ namespace drinks_info
                 string rawResponse = response.Result.Content;
                 var serialize = JsonConvert.DeserializeObject<Categories>(rawResponse);
 
-                List<Category> returnedList = serialize.CategoriesList;
+                categories = serialize.CategoriesList;
 
-                TableVisualizationEngine.ShowTable(returnedList, "Categories Menu");
+                TableVisualizationEngine.ShowTable(categories, "Categories Menu");
                 return categories;
             }
 
             return categories;
-        }
-
-        internal void GetDrink(string drink)
-        {
-            var client = new RestClient("http://www.thecocktaildb.com/api/json/v1/1/");
-            var request = new RestRequest($"lookup.php?i={drink}");
-            var response = client.ExecuteAsync(request);
-            if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
-            {
-                string rawResponse = response.Result.Content;
-
-                var serialize = JsonConvert.DeserializeObject<DrinkDetailObject>(rawResponse);
-
-                if (serialize?.DrinkDetailList != null && serialize.DrinkDetailList.Count > 0)
-                {
-                    List<DrinkDetail> returnedList = serialize.DrinkDetailList;
-
-                    DrinkDetail drinkDetail = returnedList[0];
-
-                    List<object> prepList = new();
-
-                    foreach (PropertyInfo prop in drinkDetail.GetType().GetProperties())
-                    {
-                        if (prop.Name.Contains("str"))
-                        {
-                            string formattedName = prop.Name.Substring(3);
-
-                            var value = prop.GetValue(drinkDetail);
-                            if (!string.IsNullOrEmpty(value?.ToString()))
-                            {
-                                prepList.Add(new
-                                {
-                                    Key = formattedName,
-                                    Value = value
-                                });
-                            }
-                        }
-                    }
-
-                    TableVisualizationEngine.ShowTable(prepList, drinkDetail.strDrink);
-                }
-                else
-                {
-                    // Handle the case where the list is null or empty
-                    Console.WriteLine("No drink details found.");
-                }
-            }
-            else
-            {
-                // Handle non-OK status code
-                Console.WriteLine("Failed to retrieve data. Status code: " + response.Result.StatusCode);
-            }
         }
 
         internal List<Drink> GetDrinksByCategory(string category)
@@ -109,9 +57,53 @@ namespace drinks_info
                 TableVisualizationEngine.ShowTable(drinks, "Drinks Menu");
 
                 return drinks;
+
             }
 
             return drinks;
+
+        }
+
+        internal void GetDrink(string drink)
+        {
+            var client = new RestClient("http://www.thecocktaildb.com/api/json/v1/1/");
+            var request = new RestRequest($"lookup.php?i={drink}");
+            var response = client.ExecuteAsync(request);
+
+            if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                string rawResponse = response.Result.Content;
+
+                var serialize = JsonConvert.DeserializeObject<DrinkDetailObject>(rawResponse);
+
+                List<DrinkDetail> returnedList = serialize.DrinkDetailList;
+
+                DrinkDetail drinkDetail = returnedList[0];
+
+                List<object> prepList = new();
+
+                string formattedName = "";
+
+                foreach (PropertyInfo prop in drinkDetail.GetType().GetProperties())
+                {
+
+                    if (prop.Name.Contains("str"))
+                    {
+                        formattedName = prop.Name.Substring(3);
+                    }
+
+                    if (!string.IsNullOrEmpty(prop.GetValue(drinkDetail)?.ToString()))
+                    {
+                        prepList.Add(new
+                        {
+                            Key = formattedName,
+                            Value = prop.GetValue(drinkDetail)
+                        });
+                    }
+                }
+
+                TableVisualizationEngine.ShowTable(prepList, drinkDetail.strDrink);
+            }
         }
     }
 }
